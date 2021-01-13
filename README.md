@@ -1,6 +1,8 @@
 # CMPE-561-HW2
 
-Implementation of CYK parser using CFG.
+Implementation of CYK algorithm for to act as a recognizer and parser.
+
+Representation of CFG for Turkish will be added.
 
 
 git clone https://github.com/busraoguzoglu/CMPE-561-HW2.git - Copies your repository from GitHub to your local computer.
