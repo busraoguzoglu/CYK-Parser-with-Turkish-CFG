@@ -1,5 +1,8 @@
 # CMPE-561-HW2
 
+Implementation of CYK parser using CFG.
+
+
 git clone https://github.com/busraoguzoglu/CMPE-561-HW2.git - Copies your repository from GitHub to your local computer.
 
 git pull - Download changes and directly merge/integrate.
