@@ -1,0 +1,19 @@
+S -> NP Adv VP
+VP -> V
+VP -> NP VP
+NP -> N
+NP -> Pronoun
+Adv -> Postposition
+Adv -> NP Postposition
+V -> yer
+V -> gider
+V -> bakar
+Postposition -> ile
+N -> balığı
+N -> hambugeri
+N -> çatal
+N -> kaşık
+N -> bıçak
+Pronoun -> siz
+Pronoun -> biz
+Pronoun -> o

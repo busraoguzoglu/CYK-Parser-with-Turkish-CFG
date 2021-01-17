@@ -1,0 +1,11 @@
+S -> NP VP Q
+VP -> V
+NP -> N
+V -> yer
+V -> gider
+V -> bakar
+N -> balığı
+N -> hambugeri
+Q -> mi
+Q -> midir
+Q -> mudur
