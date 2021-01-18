@@ -1,4 +1,4 @@
-S -> NP Adv VP
+S -> NP P VP
 VP -> V
 VP -> NP VP
 NP -> N

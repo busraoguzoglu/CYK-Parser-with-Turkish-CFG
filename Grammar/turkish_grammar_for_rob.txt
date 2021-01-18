@@ -1,0 +1,14 @@
+S -> NP VP
+S -> NP VP Q
+NP -> NP NP
+NP -> NP P
+PP -> P NP
+VP -> V NP
+VP -> PP NP
+NP -> işçiler
+NP -> çatal
+VP -> yediler
+NP -> telescope
+NP -> hamburgeri
+P -> ile
+Q -> mi
