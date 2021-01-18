@@ -1,17 +1,11 @@
-S -> NP Adv VP
 S -> NP VP
 S -> NP VP Q
-S -> NP Adv VP Q
 S -> VP Q
-S -> Adv VP
-S -> Adv VP Q
 NP -> NP NP
 NP -> NP P
-NP -> Adv NP
 PP -> P NP
 VP -> V NP
 VP -> PP NP
-Adv -> NP P
 NP -> işçiler
 NP -> çatal
 NP -> teleskop
@@ -20,12 +14,10 @@ NP -> dün
 NP -> arkadaşıma
 NP -> hediye
 NP -> romanları
+NP -> ağır
 NP -> ben
 VP -> yediler
 VP -> aldım
 VP -> okuyorum
-Adv -> bir
-Adv -> tarihi
-Adv -> keyifle
 P -> ile
 Q -> mi
