@@ -1,5 +1,11 @@
 # Global dictionary used for storing the rules.
 RULE_DICT = {}
+non_terminals = ['S', 'PP', 'VP', 'NP', 'ADJ', 'ADV', 'Q', 'P', 'V'] # we will extend this later on
+
+#TODO:
+
+# f{} formatını değiştirip aynısını yapan bir şeyleri kendin yaz
+# global rule_dict ve non_terminals'ı daha farklı yönetmek mümkün mü?
 
 
 def read_grammar(grammar_file):
@@ -43,20 +49,21 @@ def convert_grammar(grammar):
 
     # Remove all the productions of the type A -> X B C or A -> B a.
     global RULE_DICT
+    global non_terminals
     unit_productions, result = [], []
     res_append = result.append
     index = 0
 
     for rule in grammar:
         new_rules = []
-        if len(rule) == 2 and rule[1][0] != "'":
+        if len(rule) == 2 and rule[1] in non_terminals:
             # Rule is in form A -> X, so back it up for later and continue with the next rule.
             unit_productions.append(rule)
             add_rule(rule)
             continue
         elif len(rule) > 2:
             # Rule is in form A -> X B C [...] or A -> X a.
-            terminals = [(item, i) for i, item in enumerate(rule) if item[0] == "'"]
+            terminals = [(item, i) for i, item in enumerate(rule) if item not in non_terminals]
             if terminals:
                 for item in terminals:
                     # Create a new non terminal symbol and replace the terminal symbol with it.
@@ -79,9 +86,16 @@ def convert_grammar(grammar):
         if rule[1] in RULE_DICT:
             for item in RULE_DICT[rule[1]]:
                 new_rule = [rule[0]] + item
-                if len(new_rule) > 2 or new_rule[1][0] == "'":
+                if len(new_rule) > 2 or new_rule[1] not in non_terminals:
                     res_append(new_rule)
                 else:
                     unit_productions.append(new_rule)
                 add_rule(new_rule)
     return result
+
+
+# high level function
+def CFG_to_CNF(grammar_file):
+    cfg_rules = read_grammar(grammar_file)
+    cnf_rules = convert_grammar(cfg_rules)
+    return cnf_rules
