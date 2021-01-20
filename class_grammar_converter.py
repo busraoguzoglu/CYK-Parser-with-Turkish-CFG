@@ -30,8 +30,9 @@ class grammar_converter:
 
         for rule in grammar:
             new_rules = []
-            if len(rule) == 2 and rule[1] in self.non_terminals:
+            if len(rule) == 2: #  and rule[1] in self.non_terminals
                 # This is VP -> V form
+                unit_productions.append(rule)
                 self.add_rule(rule)
                 continue
             elif len(rule) > 2:
@@ -56,8 +57,8 @@ class grammar_converter:
         # Handle the unit productions (A -> X)
         while unit_productions:
             rule = unit_productions.pop()
-            if rule[1] in dict_of_rules:
-                for item in dict_of_rules[rule[1]]:
+            if rule[1] in self.dict_of_rules:
+                for item in self.dict_of_rules[rule[1]]:
                     new_rule = [rule[0]] + item
                     if len(new_rule) > 2 or new_rule[1] not in self.non_terminals:
                         result.append(new_rule)
