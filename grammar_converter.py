@@ -58,7 +58,6 @@ def convert_grammar(grammar):
         new_rules = []
         if len(rule) == 2 and rule[1] in non_terminals:
             # Rule is in form A -> X, so back it up for later and continue with the next rule.
-            unit_productions.append(rule)
             add_rule(rule)
             continue
         elif len(rule) > 2:
