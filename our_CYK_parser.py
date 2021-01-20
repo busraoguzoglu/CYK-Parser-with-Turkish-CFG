@@ -44,7 +44,8 @@ class Parser:
         :param sentence: the file path to the sentence/the string repr. of the sentence to read in
         """
         self.parse_table = None
-        self.grammar = grammar_converter.CFG_to_CNF(grammar_file)
+        gc = grammar_converter(grammar_file)
+        self.grammar = gc.convert_grammar()
 
     def parse(self, input_sentence):
         """

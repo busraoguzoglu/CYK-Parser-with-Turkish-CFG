@@ -1,100 +1,68 @@
-# Global dictionary used for storing the rules.
-RULE_DICT = {}
-non_terminals = ['S', 'PP', 'VP', 'NP', 'ADJ', 'ADV', 'Q', 'P', 'V'] # we will extend this later on
+"""
+Usage:
+    gc = grammar_converter('grammar_for_rob.txt')
+    print(gc.CFG)
+    CNF = gc.convert_grammar()
+    print(CNF)
+"""
 
-#TODO:
+class grammar_converter:
 
-# f{} formatını değiştirip aynısını yapan bir şeyleri kendin yaz
-# global rule_dict ve non_terminals'ı daha farklı yönetmek mümkün mü?
+    def __init__(self, grammar_file):
 
+        with open(grammar_file, encoding = 'utf-8') as cfg:
+            lines = cfg.readlines()
 
-def read_grammar(grammar_file):
-    """
-    Reads in the given grammar file and splits it into separate lists for each rule.
-    :param grammar_file: the grammar file to read in.
-    :return: the list of rules.
-    """
-    with open(grammar_file, encoding = 'utf-8') as cfg:
-        lines = cfg.readlines()
-    return [x.replace("->", "").split() for x in lines]
+        self.CFG = [x.replace("->", "").split() for x in lines]
+        self.dict_of_rules = {}
+        self.non_terminals = ['S', 'PP', 'VP', 'NP', 'ADJ', 'ADV', 'Q', 'P', 'V'] # we will extend this later on
 
+    def add_rule(self, rule):
+        if rule[0] not in self.dict_of_rules:
+            self.dict_of_rules[rule[0]] = []
+        self.dict_of_rules[rule[0]].append(rule[1:])
 
-def add_rule(rule):
-    """
-    Adds a rule to the dictionary of lists of rules.
-    :param rule: the rule to add to the dict.
-    """
-    global RULE_DICT
+    def convert_grammar(self):
+        grammar = self.CFG
+        unit_productions = []
+        result = []
+        idx = 0
 
-    if rule[0] not in RULE_DICT:
-        RULE_DICT[rule[0]] = []
-    RULE_DICT[rule[0]].append(rule[1:])
-
-
-def convert_grammar(grammar):
-    """
-        Converts a context-free grammar in the form of
-
-        S -> NP VP
-        NP -> Det ADV N
-
-        and so on into a chomsky normal form of that grammar. After the conversion rules have either
-        exactly one terminal symbol or exactly two non terminal symbols on its right hand side.
-
-        Therefore some new non terminal symbols might be created. These non terminal symbols are
-        named like the symbol they replaced with an appended index.
-    :param grammar: the CFG.
-    :return: the given grammar converted into CNF.
-    """
-
-    # Remove all the productions of the type A -> X B C or A -> B a.
-    global RULE_DICT
-    global non_terminals
-    unit_productions, result = [], []
-    res_append = result.append
-    index = 0
-
-    for rule in grammar:
-        new_rules = []
-        if len(rule) == 2 and rule[1] in non_terminals:
-            # Rule is in form A -> X, so back it up for later and continue with the next rule.
-            add_rule(rule)
-            continue
-        elif len(rule) > 2:
-            # Rule is in form A -> X B C [...] or A -> X a.
-            terminals = [(item, i) for i, item in enumerate(rule) if item not in non_terminals]
-            if terminals:
-                for item in terminals:
-                    # Create a new non terminal symbol and replace the terminal symbol with it.
-                    # The non terminal symbol derives the replaced terminal symbol.
-                    rule[item[1]] = f"{rule[0]}{str(index)}"
-                    new_rules += [f"{rule[0]}{str(index)}", item[0]]
-                index += 1
-            while len(rule) > 3:
-                new_rules.append([f"{rule[0]}{str(index)}", rule[1], rule[2]])
-                rule = [rule[0]] + [f"{rule[0]}{str(index)}"] + rule[3:]
-                index += 1
-        # Adds the modified or unmodified (in case of A -> x i.e.) rules.
-        add_rule(rule)
-        res_append(rule)
-        if new_rules:
-            result.extend(new_rules)
-    # Handle the unit productions (A -> X)
-    while unit_productions:
-        rule = unit_productions.pop()
-        if rule[1] in RULE_DICT:
-            for item in RULE_DICT[rule[1]]:
-                new_rule = [rule[0]] + item
-                if len(new_rule) > 2 or new_rule[1] not in non_terminals:
-                    res_append(new_rule)
-                else:
-                    unit_productions.append(new_rule)
-                add_rule(new_rule)
-    return result
-
-
-# high level function
-def CFG_to_CNF(grammar_file):
-    cfg_rules = read_grammar(grammar_file)
-    cnf_rules = convert_grammar(cfg_rules)
-    return cnf_rules
+        for rule in grammar:
+            new_rules = []
+            if len(rule) == 2: #  and rule[1] in self.non_terminals
+                # This is VP -> V form
+                unit_productions.append(rule)
+                self.add_rule(rule)
+                continue
+            elif len(rule) > 2:
+                # This is S -> PP NP VP ... form, or A -> X a.
+                terminals = [(item, i) for i, item in enumerate(rule) if item not in self.non_terminals]
+                if terminals:
+                    for item in terminals:
+                        # Create a new non terminal symbol and replace the terminal symbol with it.
+                        # The non terminal symbol derives the replaced terminal symbol.
+                        rule[item[1]] = rule[0] + str(idx)
+                        new_rules += [rule[0] + str(idx), item[0]]
+                    idx += 1
+                while len(rule) > 3:
+                    new_rules.append([rule[0] + str(idx), rule[1], rule[2]])
+                    rule = [rule[0]] + [rule[0] + str(idx)] + rule[3:]
+                    idx += 1
+            # Adds the modified or unmodified (in case of A -> x i.e.) rules.
+            self.add_rule(rule)
+            result.append(rule)
+            if new_rules:
+                result += new_rules
+        # Handle the unit productions (A -> X)
+        while unit_productions:
+            rule = unit_productions.pop()
+            if rule[1] in self.dict_of_rules:
+                for item in self.dict_of_rules[rule[1]]:
+                    new_rule = [rule[0]] + item
+                    if len(new_rule) > 2 or new_rule[1] not in self.non_terminals:
+                        result.append(new_rule)
+                    else:
+                        unit_productions.append(new_rule)
+                    self.add_rule(new_rule)
+        return result
