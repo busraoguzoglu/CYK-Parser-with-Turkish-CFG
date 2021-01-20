@@ -15,7 +15,7 @@ class grammar_converter:
 
         self.CFG = [x.replace("->", "").split() for x in lines]
         self.dict_of_rules = {}
-        self.non_terminals = ['S', 'PP', 'VP', 'NP', 'ADJ', 'ADV', 'Q', 'P', 'V'] # we will extend this later on
+        self.non_terminals = ['S', 'PP', 'VP', 'NP', 'ADJ', 'ADV', 'Q', 'P', 'V', 'N'] # we will extend this later on
 
     def add_rule(self, rule):
         if rule[0] not in self.dict_of_rules:

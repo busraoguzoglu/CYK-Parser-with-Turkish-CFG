@@ -6,22 +6,24 @@ NP -> NP P
 PP -> P NP
 VP -> V NP
 VP -> PP NP
-NP -> işçiler
-NP -> çatal
-NP -> teleskop
-NP -> hamburgeri
-NP -> dün
-NP -> arkadaşıma
-NP -> hediye
-NP -> romanları
-NP -> ağır
-NP -> ben
-NP -> sen
-NP -> biz
-VP -> yediler
-VP -> aldım
-VP -> okuyorum
-VP -> yürüyoruz
+NP -> N
+VP -> V
+N -> işçiler
+N -> çatal
+N -> teleskop
+N -> hamburgeri
+N -> dün
+N -> arkadaşıma
+N -> hediye
+N -> romanları
+N -> ağır
+N -> ben
+N -> sen
+N -> biz
+V -> yediler
+V -> aldım
+V -> okuyorum
+V -> yürüyoruz
 P -> ile
 P -> ve
 Q -> mi
