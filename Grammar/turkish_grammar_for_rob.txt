@@ -16,8 +16,12 @@ NP -> hediye
 NP -> romanları
 NP -> ağır
 NP -> ben
+NP -> sen
+NP -> biz
 VP -> yediler
 VP -> aldım
 VP -> okuyorum
+VP -> yürüyoruz
 P -> ile
+P -> ve
 Q -> mi
