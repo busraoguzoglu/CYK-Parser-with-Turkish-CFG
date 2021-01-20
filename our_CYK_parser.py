@@ -1,4 +1,4 @@
-import grammar_converter
+from grammar_converter import *
 
 # Şimdilik our parser değil
 # Rob un parseri üzerinden
