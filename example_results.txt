@@ -1,0 +1,19 @@
+Possible parse(s):
+[S [S0 [NP [NP 'işçiler'] [NP [NP 'hamburgeri'] [NP [NP 'çatal'] [P 'ile']]]] [VP 'yediler']] [Q 'mi']]
+[S [S0 [NP [NP 'işçiler'] [NP [NP [NP 'hamburgeri'] [NP 'çatal']] [P 'ile']]] [VP 'yediler']] [Q 'mi']]
+[S [S0 [NP [NP [NP 'işçiler'] [NP 'hamburgeri']] [NP [NP 'çatal'] [P 'ile']]] [VP 'yediler']] [Q 'mi']]
+[S [S0 [NP [NP [NP 'işçiler'] [NP [NP 'hamburgeri'] [NP 'çatal']]] [P 'ile']] [VP 'yediler']] [Q 'mi']]
+[S [S0 [NP [NP [NP [NP 'işçiler'] [NP 'hamburgeri']] [NP 'çatal']] [P 'ile']] [VP 'yediler']] [Q 'mi']]
+The given sentence is contained in the language produced by the given grammar!
+
+Possible parse(s):
+[S [NP [NP 'dün'] [NP [NP 'arkadaşıma'] [NP 'hediye']]] [VP 'aldım']]
+[S [NP [NP [NP 'dün'] [NP 'arkadaşıma']] [NP 'hediye']] [VP 'aldım']]
+The given sentence is contained in the language produced by the given grammar!
+
+Possible parse(s):
+[S [NP [NP 'ben'] [NP 'romanları']] [VP 'okuyorum']]
+The given sentence is contained in the language produced by the given grammar!
+
+Possible parse(s):
+[S [NP [NP 'ağır'] [NP 'romanları']] [VP 'yediler']]
