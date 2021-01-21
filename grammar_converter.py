@@ -15,12 +15,14 @@ class grammar_converter:
 
         self.CFG = [x.replace("->", "").split() for x in lines]
         self.dict_of_rules = {}
-        self.non_terminals = ['S', 'PP', 'VP', 'NP', 'ADJ', 'ADV', 'Q', 'P', 'V', 'N'] # we will extend this later on
+        self.non_terminals = ['S', 'PP', 'VP', 'NP', 'ADJ', 'ADV', 'Q', 'P', 'V', 'N', 'PRO', 'Past1', 'Past2', 'Past3'] # we will extend this later on
 
     def add_rule(self, rule):
         if rule[0] not in self.dict_of_rules:
             self.dict_of_rules[rule[0]] = []
         self.dict_of_rules[rule[0]].append(rule[1:])
+        # Burası dogru geliyor.
+        #print(self.dict_of_rules)
 
     def convert_grammar(self):
         grammar = self.CFG
@@ -34,6 +36,7 @@ class grammar_converter:
                 # This is VP -> V form
                 unit_productions.append(rule)
                 self.add_rule(rule)
+                #print(self.dict_of_rules)
                 continue
             elif len(rule) > 2:
                 # This is S -> PP NP VP ... form, or A -> X a.
@@ -54,10 +57,13 @@ class grammar_converter:
             result.append(rule)
             if new_rules:
                 result += new_rules
+                print('modfiying rules:', self.dict_of_rules)
         # Handle the unit productions (A -> X)
         while unit_productions:
             rule = unit_productions.pop()
             if rule[1] in self.dict_of_rules:
+                print('true', rule[1])
+                # Buraya hiç girmiyor nedense
                 for item in self.dict_of_rules[rule[1]]:
                     new_rule = [rule[0]] + item
                     if len(new_rule) > 2 or new_rule[1] not in self.non_terminals:
@@ -65,4 +71,7 @@ class grammar_converter:
                     else:
                         unit_productions.append(new_rule)
                     self.add_rule(new_rule)
+
+
+        print(result)
         return result

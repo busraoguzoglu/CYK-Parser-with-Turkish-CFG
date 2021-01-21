@@ -76,7 +76,6 @@ class Parser:
                     # i. kelime için olan [] kısmına rule'u append ediyoruz.
                     self.parse_table[0][i].append(Node(rule[0], word))
 
-
         # Bu kısmı pek anlamadım..
         for words_to_consider in range(2, length + 1):
             for starting_cell in range(0, length - words_to_consider + 1):
@@ -100,16 +99,24 @@ class Parser:
         representation of the tree(s) instead of printing it.
         """
         start_symbol = self.grammar[0][0]
-        final_nodes = [n for n in self.parse_table[-1][0] if n.symbol == start_symbol]
+        print(start_symbol)
+
+        final_nodes = []
+        #final_nodes = [n for n in self.parse_table[-1][0] if n.symbol == start_symbol]
+
+        for node in self.parse_table[-1][0]:
+            if node.symbol == start_symbol:
+                final_nodes.append(node)
+                print(node.symbol)
+
+        # Meaning it could find a parse tree
         if final_nodes:
             if output:
                 print("The given sentence is contained in the language produced by the given grammar!")
                 print("\nPossible parse(s):")
-            trees = [generate_tree(node) for node in final_nodes]
-            if output:
+                trees = [generate_tree(node) for node in final_nodes]
                 for tree in trees:
                     print(tree)
-            else:
                 return trees
         else:
             print("The given sentence is not contained in the language produced by the given grammar!")
@@ -125,3 +132,17 @@ def generate_tree(node):
         return f"[{node.symbol} '{node.child1}']"
     return f"[{node.symbol} {generate_tree(node.child1)} {generate_tree(node.child2)}]"
 
+def main():
+
+    CYK = Parser('Grammar/turkish_grammar_for_rob.txt')
+
+    #print(CYK.grammar)
+
+    CYK.parse('dün arkadaşıma güzel hediye aldım')
+    CYK.print_tree()
+
+    #CYK.parse('ağır romanları yediler')
+    #CYK.print_tree()
+
+if __name__ == '__main__':
+    main()

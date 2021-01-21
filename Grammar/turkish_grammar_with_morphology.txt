@@ -1,10 +1,12 @@
-S -> NP VP
-VP -> V + Past1
-VP -> V + Past2
-VP -> V + Past3
-NP -> ben
-NP -> sen
-NP -> o
+S -> NP VP Past
+NP -> N
+VP -> V
+Past -> Past1
+Past -> Past2
+Past -> Past3
+N -> ben
+N -> sen
+N -> o
 V -> gel
 Past1 -> dim
 Past2 -> din

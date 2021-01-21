@@ -1,12 +1,14 @@
 S -> NP VP
 S -> NP VP Q
 S -> VP Q
+S -> VP
 NP -> NP NP
 NP -> NP P
-PP -> P NP
+NP -> P NP
 VP -> V NP
-VP -> PP NP
+VP -> P NP
 NP -> N
+NP -> PRO
 VP -> V
 N -> işçiler
 N -> çatal
@@ -16,14 +18,16 @@ N -> dün
 N -> arkadaşıma
 N -> hediye
 N -> romanları
+P -> ile
+P -> ve
+ADV -> keyifle
+Q -> mi
+PRO -> ben
+PRO -> sen
+PRO -> biz
+N -> güzel
 N -> ağır
-N -> ben
-N -> sen
-N -> biz
 V -> yediler
 V -> aldım
 V -> okuyorum
 V -> yürüyoruz
-P -> ile
-P -> ve
-Q -> mi
