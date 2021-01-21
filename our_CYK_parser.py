@@ -107,7 +107,7 @@ class Parser:
         for node in self.parse_table[-1][0]:
             if node.symbol == start_symbol:
                 final_nodes.append(node)
-                print(node.symbol)
+                #print(node.symbol)
 
         # Meaning it could find a parse tree
         if final_nodes:
@@ -134,11 +134,11 @@ def generate_tree(node):
 
 def main():
 
-    CYK = Parser('Grammar/turkish_grammar_for_rob.txt')
+    CYK = Parser('Grammar/turkish_grammar_for_rob2.txt')
 
-    #print(CYK.grammar)
+    print(CYK.grammar)
 
-    CYK.parse('dün arkadaşıma güzel hediye aldım')
+    CYK.parse('dün ben arkadaşıma hediye aldım')
     CYK.print_tree()
 
     #CYK.parse('ağır romanları yediler')

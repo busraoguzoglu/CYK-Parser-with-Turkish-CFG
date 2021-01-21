@@ -37,10 +37,15 @@ class grammar_converter:
                 unit_productions.append(rule)
                 self.add_rule(rule)
                 #print(self.dict_of_rules)
+
+                # Burda append etmeyince terminalleri kaybediyoruz.
+                result.append(rule)
+
                 continue
             elif len(rule) > 2:
                 # This is S -> PP NP VP ... form, or A -> X a.
                 terminals = [(item, i) for i, item in enumerate(rule) if item not in self.non_terminals]
+                #print(terminals)
                 if terminals:
                     for item in terminals:
                         # Create a new non terminal symbol and replace the terminal symbol with it.
@@ -57,12 +62,13 @@ class grammar_converter:
             result.append(rule)
             if new_rules:
                 result += new_rules
-                print('modfiying rules:', self.dict_of_rules)
+                #print('modfiying rules:', self.dict_of_rules)
+
         # Handle the unit productions (A -> X)
         while unit_productions:
             rule = unit_productions.pop()
             if rule[1] in self.dict_of_rules:
-                print('true', rule[1])
+                #print('true', rule[1])
                 # Buraya hiç girmiyor nedense
                 for item in self.dict_of_rules[rule[1]]:
                     new_rule = [rule[0]] + item
@@ -71,7 +77,6 @@ class grammar_converter:
                     else:
                         unit_productions.append(new_rule)
                     self.add_rule(new_rule)
+                    result.append(new_rule)
 
-
-        print(result)
         return result
