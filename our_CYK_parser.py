@@ -76,7 +76,8 @@ class Parser:
                     # i. kelime için olan [] kısmına rule'u append ediyoruz.
                     self.parse_table[0][i].append(Node(rule[0], word))
 
-        # Bu kısmı pek anlamadım..
+        # Bu kısmı pek anlamadım.
+        # Length = number of tokens
         for words_to_consider in range(2, length + 1):
             for starting_cell in range(0, length - words_to_consider + 1):
                 for left_size in range(1, words_to_consider):
@@ -135,14 +136,16 @@ def generate_tree(node):
 def main():
 
     CYK = Parser('Grammar/turkish_grammar_for_rob2.txt')
+    CYK2 = Parser('Grammar/turkish_grammar_with_morphology.txt')
 
-    print(CYK.grammar)
-
-    CYK.parse('dün ben arkadaşıma hediye aldım')
-    CYK.print_tree()
-
-    #CYK.parse('ağır romanları yediler')
+    #CYK.parse('dün ben arkadaşıma güzel bir hediye aldım')
+    #CYK.parse('dün ben arkadaşıma güzel bir hediye aldım')
+    #CYK.parse('sen ve ben yürüyoruz')
     #CYK.print_tree()
+
+    #CYK2.parse('ben gel dim')
+    CYK2.parse('kitap lar oku dum')
+    CYK2.print_tree()
 
 if __name__ == '__main__':
     main()
