@@ -1,18 +1,26 @@
-S -> NP VP
-VP -> V Past1
-VP -> V Past2
-VP -> V Past3
+S -> PRO1 VP1
+S -> PRO2 VP2
+S -> PRO3 VP3
+VP1 -> V Past1
+VP2 -> V Past2
+VP3 -> V Past3
 NP -> NP PL
-NP -> ben
-NP -> sen
-NP -> o
+NP -> PRO1 PosPro1
+NP -> PRO2 PosPro2
+NP -> PRO3 PosPro3
 NP -> kitap
 PL -> lar
 V -> gel
 V -> oku
+PRO1 -> ben
+PRO2 -> sen
+PRO3 -> o
 Past1 -> dim
 Past1 -> dum
 Past2 -> din
 Past2 -> dun
 Past3 -> di
 Past3 -> du
+PosPro1 -> im
+PosPro2 -> in
+PosPro3 -> nun

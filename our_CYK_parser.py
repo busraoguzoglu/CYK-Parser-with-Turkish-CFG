@@ -135,7 +135,6 @@ def generate_tree(node):
 
 def main():
 
-    CYK = Parser('Grammar/turkish_grammar_for_rob2.txt')
     CYK2 = Parser('Grammar/turkish_grammar_with_morphology.txt')
 
     #CYK.parse('dün ben arkadaşıma güzel bir hediye aldım')
@@ -143,8 +142,8 @@ def main():
     #CYK.parse('sen ve ben yürüyoruz')
     #CYK.print_tree()
 
-    #CYK2.parse('ben gel dim')
-    CYK2.parse('kitap lar oku dum')
+    CYK2.parse('ben gel dim')
+    #CYK2.parse('ben kitap lar oku dum')
     CYK2.print_tree()
 
 if __name__ == '__main__':

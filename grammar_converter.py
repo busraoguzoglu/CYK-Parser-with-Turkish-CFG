@@ -15,7 +15,9 @@ class grammar_converter:
 
         self.CFG = [x.replace("->", "").split() for x in lines]
         self.dict_of_rules = {}
-        self.non_terminals = ['S', 'PP', 'VP', 'NP', 'ADJ', 'ADV', 'Q', 'P', 'V', 'N', 'PRO', 'Past1', 'Past2', 'Past3', 'PL'] # we will extend this later on
+        self.non_terminals = ['S', 'PP', 'VP', 'NP', 'ADJ', 'ADV', 'Q', 'P', 'V', 'N', 'PRO', 'PRO1','PRO2','PRO3',
+                              'Past1', 'Past2', 'Past3', 'PL',
+                              'PosPro1', 'PosPro2', 'PosPro3'] # we will extend this later on
 
     def add_rule(self, rule):
         if rule[0] not in self.dict_of_rules:
@@ -65,19 +67,19 @@ class grammar_converter:
                 #print('modfiying rules:', self.dict_of_rules)
 
         # Handle the unit productions (A -> X)
-        #while unit_productions:
-        #    rule = unit_productions.pop()
-        #    if rule[1] in self.dict_of_rules:
-        #        #print('true', rule[1])
+        while unit_productions:
+            rule = unit_productions.pop()
+            if rule[1] in self.dict_of_rules:
+                #print('true', rule[1])
                 # Buraya hiç girmiyor nedense
-        #        for item in self.dict_of_rules[rule[1]]:
-        #            new_rule = [rule[0]] + item
-        #            if len(new_rule) > 2 or new_rule[1] not in self.non_terminals:
-        #                result.append(new_rule)
-        #            else:
-        #                unit_productions.append(new_rule)
-        #            self.add_rule(new_rule)
-        #            result.append(new_rule)
+                for item in self.dict_of_rules[rule[1]]:
+                    new_rule = [rule[0]] + item
+                    if len(new_rule) > 2 or new_rule[1] not in self.non_terminals:
+                        result.append(new_rule)
+                    else:
+                        unit_productions.append(new_rule)
+                    self.add_rule(new_rule)
+                    result.append(new_rule)
 
         print(result)
         return result
