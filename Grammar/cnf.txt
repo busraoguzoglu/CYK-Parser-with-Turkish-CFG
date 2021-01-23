@@ -12,18 +12,35 @@ S -> PRO VP
 S -> S5 VP
 S5 -> SING N
 S -> NP VP
-S -> S6 VP1
+S -> S6 VPPAST1
 S6 -> PRO1 N
-S -> S7 VP2
+S -> S7 VPPAST2
 S7 -> PRO2 N
-S -> S8 VP3
+S -> S8 VPPAST3
 S8 -> PRO3 N
+S -> S9 VPPAST1
+S9 -> PRO1 PASTNOUN
+S -> S10 VPPAST2
+S10 -> PRO2 PASTNOUN
+S -> S11 VPPAST3
+S11 -> PRO3 PASTNOUN
+S -> S12 VPFUT1
+S12 -> PRO1 FUTNOUN
+S -> S13 VPFUT2
+S13 -> PRO2 FUTNOUN
+S -> S14 VPFUT3
+S14 -> PRO3 FUTNOUN
 NP1 -> PRO1 PosPro1
 NP2 -> PRO2 PosPro2
 NP3 -> PRO3 PosPro3
-VP1 -> V Past1
-VP2 -> V Past2
-VP3 -> V Past3
+VPPAST1 -> V Past1
+VPPAST2 -> V Past2
+VPPAST3 -> V Past3
+VPFUT1 -> VPFUT115 Past1
+VPFUT115 -> V FUT
+VPFUT2 -> VPFUT216 Past2
+VPFUT216 -> V FUT
+VPFUT3 -> V FUT
 NP -> N
 N -> kitap
 N -> kalem
@@ -44,9 +61,13 @@ Past2 -> din
 Past2 -> dun
 Past3 -> di
 Past3 -> du
+FUT -> ecek
 PosPro1 -> im
 PosPro2 -> in
+PosPro2 -> sin
 PosPro3 -> nun
+PASTNOUN -> dün
+FUTNOUN -> yarın
 PRO -> o
 PRO -> o
 PRO -> sen
