@@ -81,5 +81,4 @@ class grammar_converter:
                     self.add_rule(new_rule)
                     result.append(new_rule)
 
-        print(result)
         return result
