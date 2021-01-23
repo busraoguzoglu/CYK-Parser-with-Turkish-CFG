@@ -1,7 +1,7 @@
 S -> PRO1 V Past1
 S -> PRO2 V Past2
 S -> PRO3 V Past3
-NP -> NP PL
+S -> PRO1 V
 NP -> PRO1 PosPro1
 NP -> PRO2 PosPro2
 NP -> PRO3 PosPro3
