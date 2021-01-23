@@ -16,6 +16,8 @@ class grammar_converter:
         self.CFG = [x.replace("->", "").split() for x in lines]
         self.dict_of_rules = {}
         self.non_terminals = ['S', 'PP', 'VP', 'NP', 'ADJ', 'ADV', 'Q', 'P', 'V', 'N', 'PRO', 'PRO1','PRO2','PRO3',
+                              'NP1', 'NP2', 'NP3', 'SING',
+                              'VP1', 'VP2', 'VP3',
                               'Past1', 'Past2', 'Past3', 'PL',
                               'PosPro1', 'PosPro2', 'PosPro3'] # we will extend this later on
 

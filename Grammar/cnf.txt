@@ -1,0 +1,61 @@
+S -> S0 Past1
+S0 -> PRO1 V
+S -> S1 Past2
+S1 -> PRO2 V
+S -> S2 Past3
+S2 -> PRO3 V
+S -> S3 PosPro1
+S3 -> NP1 NP
+S -> S4 PosPro2
+S4 -> NP2 NP
+S -> PRO VP
+S -> S5 VP
+S5 -> SING N
+S -> NP VP
+S -> S6 VP1
+S6 -> PRO1 N
+S -> S7 VP2
+S7 -> PRO2 N
+S -> S8 VP3
+S8 -> PRO3 N
+NP1 -> PRO1 PosPro1
+NP2 -> PRO2 PosPro2
+NP3 -> PRO3 PosPro3
+VP1 -> V Past1
+VP2 -> V Past2
+VP3 -> V Past3
+NP -> N
+N -> kitap
+N -> kalem
+N -> roman
+PL -> lar
+SING -> bir
+V -> gel
+V -> oku
+PRO -> PRO1
+PRO -> PRO2
+PRO -> PRO3
+PRO1 -> ben
+PRO2 -> sen
+PRO3 -> o
+Past1 -> dim
+Past1 -> dum
+Past2 -> din
+Past2 -> dun
+Past3 -> di
+Past3 -> du
+PosPro1 -> im
+PosPro2 -> in
+PosPro3 -> nun
+PRO -> o
+PRO -> o
+PRO -> sen
+PRO -> sen
+PRO -> ben
+PRO -> ben
+NP -> kitap
+NP -> kitap
+NP -> kalem
+NP -> kalem
+NP -> roman
+NP -> roman
