@@ -1,11 +1,12 @@
-S -> PRO VP
-S -> SING N VP
-S -> NP1 NP POSPRO1
-S -> NP2 NP POSPRO2
+S -> PRO1 NP POSPRO1
+S -> PRO2 NP POSPRO2
+S -> PRO3 NP POSPRO3
 S -> PRO1 VPPAST1
 S -> PRO2 VPPAST2
 S -> PRO3 VPPAST3
 S -> NP VPPAST1
+S -> NP VPPAST2
+S -> NP VPPAST3
 S -> PRO1 N VPPAST1
 S -> PRO2 N VPPAST2
 S -> PRO3 N VPPAST3
@@ -22,9 +23,9 @@ S -> PRO3 VPPRE3
 S -> PRO1 PRENOUN VPPRE1
 S -> PRO2 PRENOUN VPPRE2
 S -> PRO3 PRENOUN VPPRE3
-NP1 -> PRO1 POSPRO1
-NP2-> PRO2 POSPRO2
-NP3 -> PRO3 POSPRO3
+PRO1 -> PRO1 POSPRO1
+PRO1 -> PRO2 POSPRO2
+PRO1 -> PRO3 POSPRO3
 VPPAST -> N VPPAST1
 VPPAST -> N VPPAST2
 VPPAST -> N VPPAST3
@@ -46,19 +47,6 @@ NP -> FUTNOUN
 VP -> ADV NP V
 VP -> ADV V
 VP -> V
-N -> kitap
-N -> kalem
-N -> roman
-N -> akşam
-N -> yemeği
-N -> yardım
-N -> anneme
-V -> gel
-V -> oku
-V -> et
-PRO -> PRO1
-PRO -> PRO2
-PRO -> PRO3
 PRO1 -> ben
 PRO2 -> sen
 PRO3 -> o
@@ -87,3 +75,13 @@ ADV -> keyifle
 PP -> ve
 PP -> ile
 PP -> için
+N -> kitap
+N -> kalem
+N -> roman
+N -> akşam
+N -> yemeği
+N -> yardım
+N -> anneme
+V -> gel
+V -> oku
+V -> et
