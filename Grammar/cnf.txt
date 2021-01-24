@@ -1,133 +1,121 @@
-S -> S0 POSPRO1
-S0 -> PRO1 NP
-S -> S1 POSPRO2
-S1 -> PRO2 NP
-S -> S2 POSPRO3
-S2 -> PRO3 NP
-S -> PRO1 VPPAST1
-S -> PRO2 VPPAST2
-S -> PRO3 VPPAST3
-S -> NP VPPAST1
-S -> NP VPPAST2
-S -> NP VPPAST3
-S -> S3 VPPAST1
-S3 -> PRO1 N
-S -> S4 VPPAST2
-S4 -> PRO2 N
-S -> S5 VPPAST3
-S5 -> PRO3 N
-S -> S6 VPPAST1
-S6 -> PRO1 PASTNOUN
-S -> S7 VPPAST2
-S7 -> PRO2 PASTNOUN
-S -> S8 VPPAST3
-S8 -> PRO3 PASTNOUN
-S -> S9 VPPAST
-S9 -> NP PP
-S -> S10 VPFUT1
-S10 -> PRO1 FUTNOUN
-S -> S11 VPFUT2
-S11 -> PRO2 FUTNOUN
-S -> S12 VPFUT3
-S12 -> PRO3 FUTNOUN
-S -> PRO1 VPPRE1
-S -> PRO2 VPPRE2
-S -> PRO3 VPPRE3
-S -> S13 VPPRE1
-S13 -> PRO1 PRENOUN
-S -> S14 VPPRE2
-S14 -> PRO2 PRENOUN
-S -> S15 VPPRE3
-S15 -> PRO3 PRENOUN
-PRO1 -> PRO1 POSPRO1
-PRO1 -> PRO2 POSPRO2
-PRO1 -> PRO3 POSPRO3
-VPPAST -> N VPPAST1
-VPPAST -> N VPPAST2
-VPPAST -> N VPPAST3
-VPPAST1 -> VP PAST1
-VPPAST2 -> VP PAST2
-VPPAST3 -> VP PAST3
-VPFUT1 -> VPFUT116 POSPRO1
-VPFUT116 -> VP FUT
-VPFUT2 -> VPFUT217 POSPRO2
-VPFUT217 -> VP FUT
-VPFUT3 -> VP FUT
-VPPRE1 -> VPPRE118 POSPRO1
-VPPRE118 -> VP PRE
-VPPRE2 -> VPPRE219 POSPRO2
-VPPRE219 -> VP PRE
-VPPRE3 -> VP PRE
+ADJ -> tarihi
+ADV -> keyifle
+FUT -> acak
+FUT -> ecek
+FUTNOUN -> yarýn
+N -> akþam
+N -> anneme
+N -> kalem
+N -> kitap
+N -> roman
+N -> yardým
+N -> yemeði
 NP -> ADJ N
-NP -> NP20 PL
-NP20 -> ADJ N
+NP -> FUTNOUN
 NP -> N
 NP -> NP N
+NP -> NP20 PL
 NP -> PASTNOUN
-NP -> FUTNOUN
-VP -> VP21 V
-VP21 -> ADV NP
-VP -> ADV V
-VP -> V
-PRO1 -> ben
-PRO2 -> sen
-PRO3 -> o
+NP -> akþam
+NP -> anneme
+NP -> dün
+NP -> kalem
+NP -> kitap
+NP -> roman
+NP -> yardým
+NP -> yarýn
+NP -> yemeði
+NP20 -> ADJ N
 PAST1 -> dim
 PAST1 -> dum
 PAST2 -> din
 PAST2 -> dun
 PAST3 -> di
 PAST3 -> du
-FUT -> ecek
-FUT -> acak
-PRE -> yor
+PASTNOUN -> dün
+PL -> lar
 POSPRO1 -> im
 POSPRO1 -> um
 POSPRO2 -> in
 POSPRO2 -> sin
 POSPRO2 -> sun
 POSPRO3 -> nun
-PASTNOUN -> dÃ¼n
-FUTNOUN -> yarÄ±n
-PRENOUN -> ÅŸimdi
-PL -> lar
-SING -> bir
-ADJ -> tarihi
-ADV -> keyifle
-PP -> ve
 PP -> ile
-PP -> iÃ§in
-N -> kitap
-N -> kalem
-N -> roman
-N -> akÅŸam
-N -> yemeÄŸi
-N -> yardÄ±m
-N -> anneme
+PP -> için
+PP -> ve
+PRE -> yor
+PRENOUN -> þimdi
+PRO1 -> PRO1 POSPRO1
+PRO1 -> PRO2 POSPRO2
+PRO1 -> PRO3 POSPRO3
+PRO1 -> ben
+PRO2 -> sen
+PRO3 -> o
+S -> NP VPPAST1
+S -> NP VPPAST2
+S -> NP VPPAST3
+S -> PRO1 VPPAST1
+S -> PRO1 VPPRE1
+S -> PRO2 VPPAST2
+S -> PRO2 VPPRE2
+S -> PRO3 VPPAST3
+S -> PRO3 VPPRE3
+S -> S0 POSPRO1
+S -> S1 POSPRO2
+S -> S10 VPFUT1
+S -> S11 VPFUT2
+S -> S12 VPFUT3
+S -> S13 VPPRE1
+S -> S14 VPPRE2
+S -> S15 VPPRE3
+S -> S2 POSPRO3
+S -> S3 VPPAST1
+S -> S4 VPPAST2
+S -> S5 VPPAST3
+S -> S6 VPPAST1
+S -> S7 VPPAST2
+S -> S8 VPPAST3
+S -> S9 VPPAST
+S0 -> PRO1 NP
+S1 -> PRO2 NP
+S10 -> PRO1 FUTNOUN
+S11 -> PRO2 FUTNOUN
+S12 -> PRO3 FUTNOUN
+S13 -> PRO1 PRENOUN
+S14 -> PRO2 PRENOUN
+S15 -> PRO3 PRENOUN
+S2 -> PRO3 NP
+S3 -> PRO1 N
+S4 -> PRO2 N
+S5 -> PRO3 N
+S6 -> PRO1 PASTNOUN
+S7 -> PRO2 PASTNOUN
+S8 -> PRO3 PASTNOUN
+S9 -> NP PP
+SING -> bir
+V -> et
 V -> gel
 V -> oku
-V -> et
-VP -> gel
+VP -> ADV V
+VP -> V
+VP -> VP21 V
+VP -> et
 VP -> gel
 VP -> oku
-VP -> oku
-VP -> et
-VP -> et
-NP -> yarÄ±n
-NP -> yarÄ±n
-NP -> dÃ¼n
-NP -> dÃ¼n
-NP -> kitap
-NP -> kitap
-NP -> kalem
-NP -> kalem
-NP -> roman
-NP -> roman
-NP -> akÅŸam
-NP -> akÅŸam
-NP -> yemeÄŸi
-NP -> yemeÄŸi
-NP -> yardÄ±m
-NP -> yardÄ±m
-NP -> anneme
-NP -> anneme
+VP21 -> ADV NP
+VPFUT1 -> VPFUT116 POSPRO1
+VPFUT116 -> VP FUT
+VPFUT2 -> VPFUT217 POSPRO2
+VPFUT217 -> VP FUT
+VPFUT3 -> VP FUT
+VPPAST -> N VPPAST1
+VPPAST -> N VPPAST2
+VPPAST -> N VPPAST3
+VPPAST1 -> VP PAST1
+VPPAST2 -> VP PAST2
+VPPAST3 -> VP PAST3
+VPPRE1 -> VPPRE118 POSPRO1
+VPPRE118 -> VP PRE
+VPPRE2 -> VPPRE219 POSPRO2
+VPPRE219 -> VP PRE
+VPPRE3 -> VP PRE
