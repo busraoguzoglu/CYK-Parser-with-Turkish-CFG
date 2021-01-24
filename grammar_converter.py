@@ -1,6 +1,6 @@
 """
 Usage:
-    gc = grammar_converter('grammar_for_rob.txt')
+    gc = grammar_converter('grammar_file.txt')
     print(gc.CFG)
     CNF = gc.convert_grammar()
     print(CNF)
@@ -9,18 +9,13 @@ Usage:
 class grammar_converter:
 
     def __init__(self, grammar_file):
-
         with open(grammar_file, encoding = 'utf-8') as cfg:
-            lines = cfg.readlines()
-
-        self.CFG = [x.replace("->", "").split() for x in lines]
+            lines = cfg.readlines() # first line is dedicated for list of non-terminals
+            
+        self.CFG = [x.replace("->", "").split() for x in lines[1:]]
         self.dict_of_rules = {}
-        self.non_terminals = ['S', 'PP', 'VP', 'NP', 'ADJ', 'ADV', 'Q', 'P', 'V', 'N', 'PRO', 'PRO1','PRO2','PRO3',
-                              'VP1','VP2','VP3', 'NP1', 'NP2', 'NP3', 'SING', 'VPPAST1', 'VPPAST2', 'VPPAST3', 'VPPAST',
-                              'PASTNOUN', 'FUTNOUN', 'PRENOUN', 'PRE', 'VPPRE1', 'VPPRE2', 'VPPRE3',
-                              'VPFUT1', 'VPFUT2', 'VPFUT3', 'FUT',
-                              'PAST1', 'PAST2', 'PAST3', 'PL',
-                              'POSPRO1', 'POSPRO2', 'POSPRO3'] # we will extend this later on
+        self.non_terminals = lines[0].rstrip().strip().split()
+
 
     def add_rule(self, rule):
         if rule[0] not in self.dict_of_rules:
