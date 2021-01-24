@@ -17,7 +17,7 @@ class grammar_converter:
         self.dict_of_rules = {}
         self.non_terminals = ['S', 'PP', 'VP', 'NP', 'ADJ', 'ADV', 'Q', 'P', 'V', 'N', 'PRO', 'PRO1','PRO2','PRO3',
                               'VP1','VP2','VP3', 'NP1', 'NP2', 'NP3', 'SING', 'VPPAST1', 'VPPAST2', 'VPPAST3', 'VPPAST',
-                              'PASTNOUN', 'FUTNOUN',
+                              'PASTNOUN', 'FUTNOUN', 'PRENOUN', 'PRE', 'VPPRE1', 'VPPRE2', 'VPPRE3',
                               'VPFUT1', 'VPFUT2', 'VPFUT3', 'FUT',
                               'PAST1', 'PAST2', 'PAST3', 'PL',
                               'POSPRO1', 'POSPRO2', 'POSPRO3'] # we will extend this later on
