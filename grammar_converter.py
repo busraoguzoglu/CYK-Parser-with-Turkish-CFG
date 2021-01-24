@@ -19,8 +19,8 @@ class grammar_converter:
                               'VP1','VP2','VP3', 'NP1', 'NP2', 'NP3', 'SING', 'VPPAST1', 'VPPAST2', 'VPPAST3',
                               'PASTNOUN', 'FUTNOUN',
                               'VPFUT1', 'VPFUT2', 'VPFUT3', 'FUT',
-                              'Past1', 'Past2', 'Past3', 'PL',
-                              'PosPro1', 'PosPro2', 'PosPro3'] # we will extend this later on
+                              'PAST1', 'PAST2', 'PAST3', 'PL',
+                              'POSPRO1', 'POSPRO2', 'POSPRO3'] # we will extend this later on
 
     def add_rule(self, rule):
         if rule[0] not in self.dict_of_rules:
