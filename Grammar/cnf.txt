@@ -8,7 +8,7 @@ S1 -> NP2 NP
 S -> PRO VP
 S -> S2 VP
 S2 -> SING N
-S -> NP VP
+S -> NP VPPAST1
 S -> S3 VPPAST1
 S3 -> PRO1 N
 S -> S4 VPPAST2
@@ -38,12 +38,13 @@ VPFUT112 -> V FUT
 VPFUT2 -> VPFUT213 POSPRO2
 VPFUT213 -> V FUT
 VPFUT3 -> V FUT
+NP -> ADJ N
+NP -> NP14 PL
+NP14 -> ADJ N
 NP -> N
 N -> kitap
 N -> kalem
 N -> roman
-PL -> lar
-SING -> bir
 V -> gel
 V -> oku
 PRO -> PRO1
@@ -66,6 +67,9 @@ POSPRO2 -> sin
 POSPRO3 -> nun
 PASTNOUN -> dün
 FUTNOUN -> yarın
+PL -> lar
+SING -> bir
+ADJ -> tarihi
 PRO -> o
 PRO -> o
 PRO -> sen
