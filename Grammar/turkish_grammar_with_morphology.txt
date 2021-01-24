@@ -15,9 +15,13 @@ S -> PRO3 PASTNOUN VPPAST3
 S -> PRO1 FUTNOUN VPFUT1
 S -> PRO2 FUTNOUN VPFUT2
 S -> PRO3 FUTNOUN VPFUT3
+S -> NP PP VPPAST
 NP1 -> PRO1 POSPRO1
 NP2-> PRO2 POSPRO2
 NP3 -> PRO3 POSPRO3
+VPPAST -> N VPPAST1
+VPPAST -> N VPPAST2
+VPPAST -> N VPPAST3
 VPPAST1 -> V PAST1
 VPPAST2 -> V PAST2
 VPPAST3 -> V PAST3
@@ -27,11 +31,18 @@ VPFUT3 -> V FUT
 NP -> ADJ N
 NP -> ADJ N PL
 NP -> N
+NP -> NP N
+NP -> PASTNOUN
+NP -> FUTNOUN
 N -> kitap
 N -> kalem
 N -> roman
+N -> akşam
+N -> yemeği
+N -> yardım
 V -> gel
 V -> oku
+V -> et
 PRO -> PRO1
 PRO -> PRO2
 PRO -> PRO3
@@ -55,3 +66,6 @@ FUTNOUN -> yarın
 PL -> lar
 SING -> bir
 ADJ -> tarihi
+PP -> ve
+PP -> ile
+PP -> için
