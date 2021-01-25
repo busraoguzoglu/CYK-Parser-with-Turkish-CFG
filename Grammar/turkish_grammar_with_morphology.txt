@@ -41,6 +41,8 @@ VPPRE2 -> VP PRE POSPRO2
 VPPRE3 -> VP PRE
 NP -> ADJ N
 NP -> ADJ N PL
+NP -> ADJ SING N
+NP -> SING ADJ N
 NP -> N
 NP -> NP N
 NP -> PASTNOUN
@@ -71,6 +73,7 @@ FUTNOUN -> yarın
 PRENOUN -> şimdi
 PL -> lar
 SING -> bir
+SING -> tek
 ADJ -> tarihi
 ADV -> keyifle
 PP -> ve
