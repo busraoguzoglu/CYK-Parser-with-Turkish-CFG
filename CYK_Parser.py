@@ -1,4 +1,6 @@
+import numpy as np
 from tabulate import tabulate
+from grammar_converter import *
 
 # Class of Node for Binary Tree building
 class Node(object):
@@ -26,13 +28,22 @@ class Production(object):
 class Grammar(object):
 
     def __init__(self, filename):
+
+        cg = grammar_converter(filename)
+        cnf = np.unique(np.array(cg.convert_grammar(), dtype = object)).tolist()
+        """
+        file = open('Grammar/cnf.txt', 'w')
+        for i in range(len(cnf)):
+            file.write(",".join([cnf[i][0]] + ["->"]+ cnf[i][1:]).replace(',', ' ') + "\n")
+        file.close()
+        """
+
         self.grammar_rules = {}
         self.parse_table = None
         self.length = 0
-        for line in open(filename):
-            a, b = line.split("->")
-            a = a.rstrip().strip()
-            b = b.rstrip().strip()
+        for line in cnf:
+            a = line[0]
+            b = " ".join(line[1:])
 
             if b not in self.grammar_rules.keys():
                 self.grammar_rules[b] = []
