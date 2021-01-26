@@ -31,16 +31,11 @@ class Grammar(object):
 
         cg = grammar_converter(filename)
         cnf = np.unique(np.array(cg.convert_grammar(), dtype = object)).tolist()
-        """
-        file = open('Grammar/cnf.txt', 'w')
-        for i in range(len(cnf)):
-            file.write(",".join([cnf[i][0]] + ["->"]+ cnf[i][1:]).replace(',', ' ') + "\n")
-        file.close()
-        """
 
         self.grammar_rules = {}
         self.parse_table = None
         self.length = 0
+        self.num_of_trees = 0
         for line in cnf:
             a = line[0]
             b = " ".join(line[1:])
@@ -55,8 +50,7 @@ class Grammar(object):
         else:
             return None
  
-    def parse(self,sentence):
-        self.num_of_trees = 0
+    def parse(self, sentence):
         self.tokens = sentence.split()
         self.length = len(self.tokens)
         self.parse_table = [[Production() for x in range(self.length - y)] for y in range(self.length) ]
@@ -74,11 +68,11 @@ class Grammar(object):
         for l in range(2, self.length + 1):
             for s in range(1, self.length-l + 2):
                 for p in range(1, l-1 + 1):
-                    token1 = self.parse_table[p-1][s-1].productions
-                    token2 = self.parse_table[l-p-1][s+p-1].productions
+                    pr1 = self.parse_table[p-1][s-1].productions
+                    pr2 = self.parse_table[l-p-1][s+p-1].productions
                             
-                    for a in token1:
-                        for b in token2:
+                    for a in pr1:
+                        for b in pr2:
                             r = self.check_rule(str(a.terminal) + " " + str(b.terminal))
                                     
                             if r is not None:
@@ -86,10 +80,10 @@ class Grammar(object):
                                     #print('Applied Rule: ' + str(w) + '[' + str(l) + ',' + str(s) + ']' + ' --> ' + str(a.terminal) + '[' + str(p) + ',' + str(s) + ']' + ' ' + str(b.terminal)+ '[' + str(l-p) + ',' + str(s+p) + ']')
                                     self.parse_table[l-1][s-1].add_production(w,a,b)
                                
-        self.number_of_trees = len(self.parse_table[self.length-1][0].get_prods)
-        if  self.number_of_trees > 0:
+        self.num_of_trees = len(self.parse_table[self.length-1][0].get_prods)
+        if  self.num_of_trees > 0:
             print('Given sentence is gramatically CORRECT')
-            print('Number of possible trees: ' + str(self.number_of_trees))
+            print('Number of possible trees: ' + str(self.num_of_trees))
         else:
             print('Given sentence is gramatically INCORRECT')
         
