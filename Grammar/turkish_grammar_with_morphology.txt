@@ -28,6 +28,8 @@ S -> PRO2 PRENOUN VPPRE2
 S -> PRO3 PRENOUN VPPRE3
 S -> NP VP IMP
 S -> NP VP PREPART
+S -> NP N PAST3
+S -> NP ADJ PAST3
 PRO1 -> PRO1 POSPRO1
 PRO1 -> PRO2 POSPRO2
 PRO1 -> PRO3 POSPRO3
@@ -51,9 +53,11 @@ NP -> SING ADJ N
 NP -> N PL
 NP -> N
 NP -> NP N
+NP -> N NP
 NP -> NP PP
 NP -> PASTNOUN
 NP -> FUTNOUN
+ADJ -> ADJ ADJ
 VP -> ADV NP V
 VP -> ADV V
 VP -> QP V
@@ -74,6 +78,7 @@ PAST1 -> dum
 PAST2 -> din
 PAST2 -> dun
 PAST3 -> di
+PAST3 -> dı
 PAST3 -> du
 PASTPL1 -> dik
 PASTPL2 -> diniz
@@ -103,6 +108,8 @@ SING -> tek
 ADJ -> tarihi
 ADJ -> yüksek
 ADJ -> en
+ADJ -> epey
+ADJ -> uzak
 ADV -> keyifle
 PP -> ve
 PP -> ile
@@ -125,6 +132,9 @@ N -> tarihimizi
 N -> buraya
 N -> son
 N -> zaman
+N -> bizim
+N -> okul
+N -> köye
 V -> gel
 V -> oku
 V -> et
