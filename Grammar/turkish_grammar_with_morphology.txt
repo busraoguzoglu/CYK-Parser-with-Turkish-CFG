@@ -30,6 +30,8 @@ S -> NP VP IMP
 S -> NP VP PREPART
 S -> NP N PAST3
 S -> NP ADJ PAST3
+S -> NP PREPART
+S -> NP ADJ PREPART
 PRO1 -> PRO1 POSPRO1
 PRO1 -> PRO2 POSPRO2
 PRO1 -> PRO3 POSPRO3
@@ -92,6 +94,7 @@ PREPART -> ır
 PREPART -> ir
 PREPART -> ar
 PREPART -> er
+PREPART -> dir
 POSPRO1 -> im
 POSPRO1 -> um
 POSPRO2 -> in
@@ -110,6 +113,7 @@ ADJ -> yüksek
 ADJ -> en
 ADJ -> epey
 ADJ -> uzak
+ADJ -> güzel
 ADV -> keyifle
 PP -> ve
 PP -> ile
@@ -135,6 +139,8 @@ N -> zaman
 N -> bizim
 N -> okul
 N -> köye
+N -> karpuz
+N -> meyve
 V -> gel
 V -> oku
 V -> et
