@@ -36,6 +36,8 @@ class Grammar(object):
         self.parse_table = None
         self.length = 0
         self.num_of_trees = 0
+        self.sentence = None
+
         for line in cnf:
             a = line[0]
             b = " ".join(line[1:])
@@ -51,6 +53,7 @@ class Grammar(object):
             return None
  
     def parse(self, sentence):
+        self.sentence = sentence
         self.tokens = sentence.split()
         self.length = len(self.tokens)
         self.parse_table = [[Production() for x in range(self.length - y)] for y in range(self.length) ]
@@ -83,10 +86,11 @@ class Grammar(object):
         self.num_of_trees = len(self.parse_table[self.length-1][0].get_prods)
         if  self.num_of_trees > 0:
             print('Given sentence is gramatically CORRECT')
-            print('Number of possible trees: ' + str(self.num_of_trees))
+            #print('Number of possible trees: ' + str(self.num_of_trees))
+            print(self.sentence)
+            print(self.get_terminals())
         else:
             print('Given sentence is gramatically INCORRECT')
-        
 
     # Prints the parsed tabe           
     def print_parsed_table(self):
@@ -101,3 +105,11 @@ class Grammar(object):
         print('')
         print(tabulate(lines))
         print('')
+
+    def get_terminals(self):
+        terminals = []
+        for i in range(len(self.parse_table[0])):
+            terminals.append(self.parse_table[0][i].productions[0].terminal)
+        return terminals
+
+
