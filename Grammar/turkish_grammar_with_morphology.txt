@@ -122,6 +122,7 @@ ADJ -> uzak
 ADJ -> güzel
 ADJ -> bu
 ADV -> keyifle
+ADV -> güzelce
 PP -> ve
 PP -> ile
 PP -> için

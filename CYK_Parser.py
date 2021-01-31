@@ -94,7 +94,8 @@ class Grammar(object):
 
     # Prints the parsed tabe           
     def print_parsed_table(self):
-        lines = [] 
+        lines = []
+
         for row in reversed(self.parse_table):
             l = []
             for p in row:
