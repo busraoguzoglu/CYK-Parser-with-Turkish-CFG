@@ -168,7 +168,7 @@ NP -> hediye
 NP -> roman
 NP -> akşam
 NP -> yemeği
-NP-> yardım
+NP -> yardım
 NP -> anneme
 NP -> arkadaşıma
 NP -> sesle

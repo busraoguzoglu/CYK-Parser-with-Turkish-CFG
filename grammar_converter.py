@@ -1,82 +1,66 @@
-"""
-Usage:
-    gc = GrammarConverter('grammar_file.txt')
-    print(gc.CFG)
-    CNF = gc.convert_grammar()
-    print(CNF)
-"""
+import numpy as np
 
 class GrammarConverter:
-
-    def __init__(self, grammar_file):
-        with open(grammar_file, encoding = 'utf-8') as cfg:
+    def __init__(self, CFG):
+        with open(CFG, encoding = 'utf-8') as cfg:
             lines = cfg.readlines() # first line is dedicated for list of non-terminals
-            
-        self.CFG = [x.replace(" ->", "").split() for x in lines[1:]]
-        self.dict_of_rules = {}
-        self.non_terminals = lines[0].rstrip().strip().split()
+        CFG = [x.replace(" ->", "").split() for x in lines[1:]]
+        CFG = np.unique(np.array(CFG, dtype = object)).tolist()
 
-
-    def add_rule(self, rule):
-        if rule[0] not in self.dict_of_rules:
-            self.dict_of_rules[rule[0]] = []
-        self.dict_of_rules[rule[0]].append(rule[1:])
-        # Burası dogru geliyor.
-        #print(self.dict_of_rules)
+        self.CFG = CFG
+        self.rules = {}
+        self.CNF = None
 
     def convert_grammar(self):
-        grammar = self.CFG
-        unit_productions = []
-        result = []
-        idx = 0
+        prods = []
 
-        for rule in grammar:
-            new_rules = []
-            if len(rule) == 2 and rule[1] in self.non_terminals:  #  
-                # This is VP -> V form
-                unit_productions.append(rule)
-                self.add_rule(rule)
-                #print(self.dict_of_rules)
+        for r in self.CFG:
+            p0 = r[0]
+            p1 = r[1:]
+            if len(p1) <= 2:
+                if p0 not in self.rules.keys():
+                    self.rules[p0] = []
+                self.rules[p0].append(p1)
+            else:
+                prods.append([p0] + p1)
 
-                # Burda append etmeyince terminalleri kaybediyoruz.
-                result.append(rule)
 
-                continue
-            elif len(rule) > 2:
-                # This is S -> PP NP VP ... form, or A -> X a.
-                terminals = [(item, i) for i, item in enumerate(rule) if item not in self.non_terminals]
-                #print(terminals)
-                if terminals:
-                    for item in terminals:
-                        # Create a new non terminal symbol and replace the terminal symbol with it.
-                        # The non terminal symbol derives the replaced terminal symbol.
-                        rule[item[1]] = rule[0] + str(idx)
-                        new_rules += [rule[0] + str(idx), item[0]]
-                    idx += 1
-                while len(rule) > 3:
-                    new_rules.append([rule[0] + str(idx), rule[1], rule[2]])
-                    rule = [rule[0]] + [rule[0] + str(idx)] + rule[3:]
-                    idx += 1
-            # Adds the modified or unmodified (in case of A -> x i.e.) rules.
-            self.add_rule(rule)
-            result.append(rule)
-            if new_rules:
-                result += new_rules
-                #print('modfiying rules:', self.dict_of_rules)
+        while prods:
+            for prod in prods:
+                p0 = prod[0]
+                p1 = prod[1:]
+                for j in range(0, len(p1)-1, 1):
+                    query = p1[j:j+2]
+                    for key in list(self.rules.keys()):
+                        for match in self.rules[key]:
+                            if query == match:
+                                potential_rule = replace(p1, query, [key])
+                                if len(potential_rule) > 2:
+                                    prods.append([p0] + potential_rule)
+                                    if prod in prods:
+                                        prods.remove(prod)
+                                elif len(potential_rule) == 2:
+                                    if prod in prods:
+                                        prods.remove(prod)
+                                    if p0 not in list(self.rules.keys()):
+                                        self.rules[p0] = []
+                                    self.rules[p0].append(potential_rule)
+                                else:
+                                    'problem'
 
-        # Handle the unit productions (A -> X)
-        while unit_productions:
-            rule = unit_productions.pop()
-            if rule[1] in self.dict_of_rules:
-                #print('true', rule[1])
-                # Buraya hiç girmiyor nedense
-                for item in self.dict_of_rules[rule[1]]:
-                    new_rule = [rule[0]] + item
-                    if len(new_rule) > 2 or new_rule[1] not in self.non_terminals:
-                        result.append(new_rule)
-                    else:
-                        unit_productions.append(new_rule)
-                    self.add_rule(new_rule)
-                    result.append(new_rule)
+        CNF = []
+        for key in self.rules.keys():
+            p0 = [key]
+            for p1 in self.rules[key]:
+                CNF.append(p0 + p1)
+        self.CNF = CNF
 
-        return result
+        return CNF
+
+def replace(lst, a, b):
+    str_l = " ".join(lst)
+    str_a = " ".join(a)
+    str_b = " ".join(b)
+    
+    str_l = str_l.replace(str_a, str_b)
+    return str_l.split()

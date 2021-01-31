@@ -29,11 +29,13 @@ class Grammar(object):
 
     def __init__(self, filename):
 
-        #cg = GrammarConverter(filename)
-        #cnf = np.unique(np.array(cg.convert_grammar(), dtype = object)).tolist()
+        cg = GrammarConverter(filename)
+        cnf = np.unique(np.array(cg.convert_grammar(), dtype = object)).tolist()
+        """
         with open(filename, encoding = 'utf-8') as cfg:
             lines = cfg.readlines() # first line is dedicated for list of non-terminals
         cnf = [x.replace(" ->", "").split() for x in lines[1:]]
+        """
         self.grammar_rules = {}
         self.parse_table = None
         self.length = 0
