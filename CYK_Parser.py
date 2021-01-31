@@ -71,7 +71,6 @@ class CYKParser(object):
                 for w in r: 
                     self.parse_table[0][idx].add_production(w, Node(token, None, None),None)
         
-        # CYK Parser
         for l in range(2, self.length + 1):
             for s in range(1, self.length-l + 2):
                 for p in range(1, l-1 + 1):
@@ -84,13 +83,11 @@ class CYKParser(object):
                                     
                             if r is not None:
                                 for w in r:
-                                    #print('Applied Rule: ' + str(w) + '[' + str(l) + ',' + str(s) + ']' + ' --> ' + str(a.terminal) + '[' + str(p) + ',' + str(s) + ']' + ' ' + str(b.terminal)+ '[' + str(l-p) + ',' + str(s+p) + ']')
                                     self.parse_table[l-1][s-1].add_production(w,a,b)
                                
         self.num_of_trees = len(self.parse_table[self.length-1][0].get_prods)
         if  self.num_of_trees > 0:
             print('Given sentence is gramatically CORRECT')
-            #print('Number of possible trees: ' + str(self.num_of_trees))
             print(self.sentence)
             print(self.get_terminals())
         else:
@@ -100,9 +97,9 @@ class CYKParser(object):
     def print_parsed_table(self):
         lines = []
 
-        for row in reversed(self.parse_table):
+        for r in reversed(self.parse_table):
             l = []
-            for p in row:
+            for p in r:
                 tmp_s = []
                 prods = p.get_prods
                 for item in prods:
