@@ -1,18 +1,18 @@
 """
 Usage:
-    gc = grammar_converter('grammar_file.txt')
+    gc = GrammarConverter('grammar_file.txt')
     print(gc.CFG)
     CNF = gc.convert_grammar()
     print(CNF)
 """
 
-class grammar_converter:
+class GrammarConverter:
 
     def __init__(self, grammar_file):
         with open(grammar_file, encoding = 'utf-8') as cfg:
             lines = cfg.readlines() # first line is dedicated for list of non-terminals
             
-        self.CFG = [x.replace("->", "").split() for x in lines[1:]]
+        self.CFG = [x.replace(" ->", "").split() for x in lines[1:]]
         self.dict_of_rules = {}
         self.non_terminals = lines[0].rstrip().strip().split()
 
@@ -32,7 +32,7 @@ class grammar_converter:
 
         for rule in grammar:
             new_rules = []
-            if len(rule) == 2: #  and rule[1] in self.non_terminals
+            if len(rule) == 2 and rule[1] in self.non_terminals:  #  
                 # This is VP -> V form
                 unit_productions.append(rule)
                 self.add_rule(rule)

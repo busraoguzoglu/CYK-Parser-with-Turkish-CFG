@@ -1,6 +1,6 @@
 import numpy as np
 from tabulate import tabulate
-from grammar_converter import *
+from grammar_converter import GrammarConverter
 
 # Class of Node for Binary Tree building
 class Node(object):
@@ -29,9 +29,11 @@ class Grammar(object):
 
     def __init__(self, filename):
 
-        cg = grammar_converter(filename)
-        cnf = np.unique(np.array(cg.convert_grammar(), dtype = object)).tolist()
-
+        #cg = GrammarConverter(filename)
+        #cnf = np.unique(np.array(cg.convert_grammar(), dtype = object)).tolist()
+        with open(filename, encoding = 'utf-8') as cfg:
+            lines = cfg.readlines() # first line is dedicated for list of non-terminals
+        cnf = [x.replace(" ->", "").split() for x in lines[1:]]
         self.grammar_rules = {}
         self.parse_table = None
         self.length = 0
@@ -99,8 +101,14 @@ class Grammar(object):
         for row in reversed(self.parse_table):
             l = []
             for p in row:
-                l.append(p.get_prods)  # list(set()) operations drop the duplicates
+                tmp_s = []
+                prods = p.get_prods
+                for item in prods:
+                    s = ''.join([i for i in item if not i.isdigit()])
+                    tmp_s.append(s)
+                l.append(np.unique(tmp_s).tolist())  # list(set()) operations drop the duplicates
             lines.append(l)
+        lines[-1] = [[item[-1]] for item in lines[-1]]
         
         lines.append(self.tokens)
         print('')
