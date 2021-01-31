@@ -25,7 +25,7 @@ class Production(object):
         return [p.terminal for p in self.productions ]
 
 # Class of Grammar
-class Grammar(object):
+class CYKParser(object):
 
     def __init__(self, filename):
 
@@ -106,8 +106,8 @@ class Grammar(object):
                 tmp_s = []
                 prods = p.get_prods
                 for item in prods:
-                    s = ''.join([i for i in item if not i.isdigit()])
-                    tmp_s.append(s)
+                    #s = ''.join([i for i in item if not i.isdigit()]) in case we want to remove digits
+                    tmp_s.append(item)
                 l.append(np.unique(tmp_s).tolist())  # list(set()) operations drop the duplicates
             lines.append(l)
         lines[-1] = [[item[-1]] for item in lines[-1]]
