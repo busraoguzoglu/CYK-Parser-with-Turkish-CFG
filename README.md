@@ -5,6 +5,3 @@ Implementation of CYK algorithm to act as a recognizer and parser. Representatio
 Examples are available on Jupyter file.
 
 Developed by Melikşah Türker and Büşra Oğuzoğlu for CMPE561 NLP class project.
-
-
-git clone https://github.com/busraoguzoglu/CMPE-561-HW2.git - Copies your repository from GitHub to your local computer.
